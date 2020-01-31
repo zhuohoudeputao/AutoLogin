@@ -1,3 +1,3 @@
 # AutoLogin
 
-A program for automaticately log in the network of scut dorm, which named "scut-student".
+It's a program for automaticately logging in the network of scut dorms, which named "scut-student".

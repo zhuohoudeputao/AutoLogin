@@ -1,13 +1,23 @@
+'''
+Author: zhuohoudeputao
+LastEditors: zhuohoudeputao
+LastEditTime: 2021-01-04 15:00:27
+Description: file content
+'''
 import requests
+import json
 
-ip = "172.28.143.167"
+with open('config.json', 'r') as config:
+    data = json.load(config)
+
+ip = data["ip"]
 wlanuserip = ip
-wlanacip = "172.28.255.251"
+wlanacip = data["wlanacip"]
 
-#登录地址
+# login address
 post_addr="https://s.scut.edu.cn:801/eportal/?c=ACSetting&a=Login&wlanuserip="+wlanuserip+"&wlanacip="+wlanacip+"&wlanacname=6108-North-slot3&redirect=&session=&vlanid=scut-student&port=&iTermType=1&protocol=https:"
 
-#构造头部信息
+# head
 post_header={
 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
 'Accept-Encoding': 'gzip, deflate, br',
@@ -24,15 +34,20 @@ post_header={
 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
 }
 
-#构造登录数据
+# data
 post_data={
-'DDDDD': '', #你的学号
-'upass': '', #你的密码
+'DDDDD': data["id"], # your id
+'upass': data["passwd"], # password
 'R1': '0',
 'R2': '',
 'R6': '0',
 'para': '00',
 '0MKKey': '123456'
 }
-#发送post请求登录网页
+
+# request
+print('requesting...')
 z=requests.post(post_addr,data=post_data,headers=post_header)
+print(z)
+print('login success!')
+input('press anykey to close the window:')

@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['AutoLogin.py'],
-             pathex=['D:\\LINZU\\OneDrive - mail.scut.edu.cn\\Documents\\AutoLogin'],
+             pathex=['C:\\Users\\LINZU\\OneDrive - mail.scut.edu.cn\\Program\\AutoLogin'],
              binaries=[],
              datas=[],
              hiddenimports=[],

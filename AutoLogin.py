@@ -1,9 +1,14 @@
 '''
 Author: zhuohoudeputao
 LastEditors: zhuohoudeputao
-LastEditTime: 2021-01-04 15:00:27
+LastEditTime: 2021-01-04 17:00:42
 Description: file content
 '''
+# import sys
+# import os
+# sys.path.append(os.getcwd())
+# print(os.getcwd())
+
 import requests
 import json
 
@@ -47,7 +52,10 @@ post_data={
 
 # request
 print('requesting...')
-z=requests.post(post_addr,data=post_data,headers=post_header)
+z=requests.post(post_addr, data=post_data, headers=post_header)
 print(z)
 print('login success!')
-input('press anykey to close the window:')
+
+# for debug
+import time
+time.sleep(2)

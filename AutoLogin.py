@@ -1,9 +1,3 @@
-'''
-Author: zhuohoudeputao
-LastEditors: zhuohoudeputao
-LastEditTime: 2021-01-04 17:00:42
-Description: file content
-'''
 import requests
 import json
 import logging

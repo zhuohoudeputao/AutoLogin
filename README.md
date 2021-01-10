@@ -1,9 +1,3 @@
-<!--
- * @Author: zhuohoudeputao
- * @LastEditors: zhuohoudeputao
- * @LastEditTime: 2021-01-04 17:17:54
- * @Description: file content
--->
 # AutoLogin
 一个华南理工大学宿舍区无线网scut-student自动登录的程序。
 

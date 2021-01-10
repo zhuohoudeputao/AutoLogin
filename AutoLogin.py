@@ -6,14 +6,34 @@ Description: file content
 '''
 import requests
 import json
+import logging
+from win10toast import ToastNotifier
+
+logger = logging.getLogger()
+logger.setLevel(level=logging.DEBUG)
+handler = logging.FileHandler('log.txt')
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+# console = logging.StreamHandler()
+# console.setLevel(logging.DEBUG)
+# logger.addHandler(console)
 
 def isConnected():
     import os
-    exit_code = os.system('ping www.baidu.com')
+    exit_code = os.system('ping www.baidu.com') # this one will run in a cmd window
     if exit_code:
         return False
     return True
 
+def isConnected2():
+    try:
+        content = requests.get('https://www.baidu.com', timeout=3.0)
+        # print(content)
+    except:
+        return False
+    return True
 
 def load_data():
     with open('config.json', 'r') as config:
@@ -57,15 +77,22 @@ def load_data():
     return post_addr, post_data, post_header
 
 if __name__=="__main__":
-    if isConnected():
-        print('Network is connected. Exiting...')
+    toaster = ToastNotifier()
+    if isConnected2():
+        logger.info('Network is connected. Exiting...')
+        toaster.show_toast("AutoLogin", 
+                        "Network is connected. Exiting...",
+                        icon_path='scut.ico',
+                        duration=5)
     else:
-        print('requesting...')
+        logger.info('Network is not connected. Trying to log in...')
+        logger.debug('Loading data...')
         post_addr, post_data, post_header = load_data()
         z=requests.post(post_addr, data=post_data, headers=post_header)
-        print(z)
-        if isConnected():
-            print('login success!')
-
-    import time
-    time.sleep(2)
+        logger.debug(str(z))
+        if isConnected2():
+            logger.info('Login success!')
+            toaster.show_toast("AutoLogin", 
+                        "Login success!",
+                        icon_path='scut.ico',
+                        duration=5)

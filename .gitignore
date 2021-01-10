@@ -2,3 +2,6 @@ __pycache__/
 .vscode/
 build/
 /dist/config.json
+/dist/log.txt
+log.txt
+try.py

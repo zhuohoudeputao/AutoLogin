@@ -2,8 +2,8 @@
 一个华南理工大学宿舍区无线网scut-student自动登录的程序。
 
 ## Usage
-1. 将config.json文件中的值修改为自己的值
-2. 将config.json移动到dist文件夹中
+1. 从Release中下载最新版本的程序（已打包为7z文件）并解压
+2. 将config.json文件中的值修改为自己的值
 3. 运行AutoLogin.exe
 4. 搭配Windows自动任务更佳
 

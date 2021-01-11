@@ -1,8 +1,7 @@
 __pycache__/
 .vscode/
 build/
-/dist/config.json
-/dist/log.txt
+dist/
 log.txt
 try.py
 AutoLogin.spec
